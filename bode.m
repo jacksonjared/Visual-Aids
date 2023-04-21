@@ -1,24 +1,18 @@
 close all; clear variables; clc;
 
 %%% vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-lower = 2;
+lower = -10;
 
-upper = 4;
+upper = 0;
 %%% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 f = logspace(lower, upper, 10000);
 w = 2 .* pi .* f;
-Wc = 10;
-Sa = 1i .* w;
-Sb = Sa ./ Wc;
 
 %%% vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-voltageTransfer = ( 1i .* w .* 0.328 ./ 5.2e-3 ) ./ ( -(w).^2 + 1i .* w .* 0.328 ./ 5.2e-3 + (1 / (5.2e-3 * 10e-6)) );
+voltageTransfer = ( -10 ./ (1j .* w + 0.01) ) + ( (-10 .* (1j .* w).^2 .* w) ./ ( (1j .* w) .* ((1j .* w).^2 + (w).^2) .* (1j .* w + 0.01) ) )
 %%% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-w = 2 .* pi .* f;
 bodeplot = 20*log10(abs(voltageTransfer));
 
 % subplot(2,2,1);

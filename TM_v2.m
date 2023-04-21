@@ -15,10 +15,10 @@ close all; clear variables; clc;
 %% Sandbox %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% The mode of the wave in the x-axis
-m = 1;
+m = 3;
 
 %%% The mode of the wave in the y-axis
-n = 1;
+n = 2;
 
 %%% Length of waveguide in x-axis
 a = 1;
@@ -34,7 +34,7 @@ plane = -0.25;
 omega = 4e10;
 
 %%% Spacial resolution
-resS = 20;
+resS = 30;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -386,12 +386,12 @@ for loop = start:stop
   %%% E field plotting
   E_arrows_YZ = quiver(Z(index,:,:), Y(index,:,:), plot_2d_Ez(index,:,:), ...
          plot_2d_Ey(index,:,:),'b', 'AutoScale', 'off', 'ShowArrowHead', ...
-                                                     'on', 'MaxHeadSize', 0.01);
+                                                     'on', 'MaxHeadSize', 0.001);
 
   %%% H field plotting
   H_arrows_YZ = quiver(Z(index,:,:), Y(index,:,:), Hz(index,:,:), ...
          plot_2d_Hy(index,:,:),'r', 'AutoScale', 'off', 'ShowArrowHead', ...
-                                                     'on', 'MaxHeadSize', 0.01);
+                                                     'on', 'MaxHeadSize', 0.001);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -402,12 +402,12 @@ for loop = start:stop
   %%% E field plotting
   E_arrows_XZ = quiver(Z(:,:,index), X(:,:,index), plot_2d_Ez(:,:,index), ...
          plot_2d_Ex(:,:,index),'b', 'AutoScale', 'off', 'ShowArrowHead', ...
-                                                     'on', 'MaxHeadSize', 0.01);
+                                                     'on', 'MaxHeadSize', 0.001);
 
   %%% H field plotting
   H_arrows_XZ = quiver(Z(:,:,index), X(:,:,index), Hz(:,:,index), ...
          plot_2d_Hx(:,:,index),'r', 'AutoScale', 'off', 'ShowArrowHead', ...
-                                                     'on', 'MaxHeadSize', 0.01);
+                                                     'on', 'MaxHeadSize', 0.001);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -416,7 +416,7 @@ for loop = start:stop
     break;
   end
 
-  pause(0.1);
+  pause;
 
   %%% Clean up the graphs
   delete(E_arrows_1);
